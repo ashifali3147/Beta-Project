@@ -60,11 +60,12 @@ public class ReasonPopup {
         list.add(cancelReason2);
         list.add(cancelReason3);
         rv.setLayoutManager(new LinearLayoutManager(dialog2.getLayoutInflater().getContext()));
-        reasonAdapter = new ReasonAdapter(dialog2.getLayoutInflater().getContext(),list);
+        reasonAdapter = new ReasonAdapter(dialog2.getLayoutInflater().getContext(),list, dialog2);
         rv.setAdapter(reasonAdapter);
 
         edtOtherReason = dialog2.findViewById(R.id.edt_other_reason);
-        rdBtnOthers = dialog2.findViewById(R.id.rdBtn_other);
+//        rdBtnOthers = dialog2.findViewById(R.id.rdBtn_other);
+
 
     }
 }

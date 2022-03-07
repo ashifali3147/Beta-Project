@@ -1,13 +1,16 @@
 package com.example.beta_project.reason;
 
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -23,10 +26,11 @@ import java.util.List;
 public class ReasonAdapter extends RecyclerView.Adapter<ReasonAdapter.MyViewAdapter> {
     Context ctx;
     List<CancelReason> cancelReasonsList;
-
-    public ReasonAdapter(Context context, List<CancelReason> cancelReasons) {
+    Dialog dialog;
+    public ReasonAdapter(Context context, List<CancelReason> cancelReasons, Dialog dialog) {
         this.cancelReasonsList = cancelReasons;
         this.ctx = context;
+        this.dialog = dialog;
     }
 
     @NonNull
@@ -50,13 +54,22 @@ public class ReasonAdapter extends RecyclerView.Adapter<ReasonAdapter.MyViewAdap
                 cancelReason.radio = false;
 
             }
-//            cancelReasonsList.get(position).radio = true;
-
-
-
+            if (cancelReasonsList.get(position).reason == "OTHERS"){
+                holder.edtOtherReason.setVisibility(View.VISIBLE);
+                Toast.makeText(ctx, "HI" +cancelReasonsList.get(position).id, Toast.LENGTH_SHORT).show();
+            }
+            else {
+                holder.edtOtherReason.setVisibility(View.GONE);
+                Toast.makeText(ctx, "Bye" +cancelReasonsList.get(position).id, Toast.LENGTH_SHORT).show();
+            }
+            cancelReasonsList.get(position).radio = true;
             notifyDataSetChanged();
         });
 
+//        holder.rad_lay.setOnClickListener(view -> {
+//
+//
+//        });
 
     }
 
@@ -68,12 +81,13 @@ public class ReasonAdapter extends RecyclerView.Adapter<ReasonAdapter.MyViewAdap
     public class MyViewAdapter extends RecyclerView.ViewHolder {
         LinearLayout rad_lay;
         RadioButton radioButton;
-
+        EditText edtOtherReason;
 
         public MyViewAdapter(@NonNull View itemView) {
             super(itemView);
             radioButton = itemView.findViewById(R.id.rdBtn_reason);
             rad_lay = itemView.findViewById(R.id.rad_lay);
+            edtOtherReason = (EditText) dialog.findViewById(R.id.edt_other_reason);
         }
     }
 }

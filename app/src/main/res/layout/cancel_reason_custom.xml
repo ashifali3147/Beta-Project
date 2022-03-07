@@ -7,24 +7,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp">
-
-        <TextView
+        >
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Confirm Cancellation"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:weightSum="10"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Confirm Cancellation"
+                android:textColor="@color/black"
+                android:layout_weight="9"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_close"
+                android:layout_weight="1"/>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:background="#E91E63" />
+            android:background="#A9ABAE"
+            android:layout_height="1dp"></View>
 
         <TextView
             android:layout_width="match_parent"
@@ -32,7 +40,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="7dp"
             android:text="Help us understand the reason for cancellation"
-            android:textSize="15dp"
+            android:textSize="12dp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -41,23 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp">
 
-            <RadioButton
-                android:id="@+id/rdBtn_other"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false" />
-
-            <TextView
-                android:id="@+id/tv_other"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Other" />
-        </LinearLayout>
 
         <EditText
             android:id="@+id/edt_other_reason"
@@ -70,11 +62,12 @@
         <TextView
             android:id="@+id/tv_confirm"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/purple_500"
             android:gravity="center"
             android:text="Confirm"
+            android:padding="5dp"
             android:textColor="@color/white" />
 
     </LinearLayout>
